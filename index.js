@@ -14,10 +14,11 @@ app.get('/', (req, res) => {
   res.send('OK');
 });
 
-
 // Головний endpoint: одна кастомна дія
 app.post('/process-inquiry', async (req, res) => {
+  const { full_name, phone, email, reason, message } = req.body;
   
+
   try {
     // КРОК 1: Шукаємо контакт за email
     const searchResponse = await axios.post(
