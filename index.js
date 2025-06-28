@@ -10,15 +10,14 @@ app.use(express.json());
 const HUBSPOT_API_KEY = process.env.HUBSPOT_API_KEY;
 const HUBSPOT_BASE_URL = 'https://api.hubapi.com';
 
+app.get('/', (req, res) => {
+  res.send('OK');
+});
+
+
 // Головний endpoint: одна кастомна дія
 app.post('/process-inquiry', async (req, res) => {
-  const { full_name, phone, email, reason, message } = req.body;
-  console.log(full_name);
-  console.log(phone);
-  console.log(email);
-  console.log(reason);
-  console.log(message);
-
+  
   try {
     // КРОК 1: Шукаємо контакт за email
     const searchResponse = await axios.post(
