@@ -163,7 +163,7 @@ app.get('/', (req, res) => {
 app.post('/process-inquiry', async (req, res) => {
   const { full_name, phone, email, reason, message, company_name } = req.body;
 
-  if (!email || !reason) {
+  if (!email) {
     return res.status(400).json({ error: 'Missing required fields: email and reason are mandatory.' });
   }
 
